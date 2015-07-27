@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="gBudget2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DataInfoes">
+          <Key>
+            <PropertyRef Name="DatainfoID" />
+          </Key>
+          <Property Name="DatainfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="MechantID" Type="int" />
+          <Property Name="NoteID" Type="int" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mechants">
+          <Key>
+            <PropertyRef Name="MechantID" />
+          </Key>
+          <Property Name="MechantID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mechant" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notes">
+          <Key>
+            <PropertyRef Name="NoteID" />
+          </Key>
+          <Property Name="NoteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Note" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__DataInfoe__Accou__35BCFE0A">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+          <End Role="DataInfoes" Type="Self.DataInfoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="DataInfoes">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DataInfoe__Categ__34C8D9D1">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="DataInfoes" Type="Self.DataInfoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="DataInfoes">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DataInfoe__Mecha__36B12243">
+          <End Role="Mechants" Type="Self.Mechants" Multiplicity="0..1" />
+          <End Role="DataInfoes" Type="Self.DataInfoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mechants">
+              <PropertyRef Name="MechantID" />
+            </Principal>
+            <Dependent Role="DataInfoes">
+              <PropertyRef Name="MechantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DataInfoe__NoteI__37A5467C">
+          <End Role="Notes" Type="Self.Notes" Multiplicity="0..1" />
+          <End Role="DataInfoes" Type="Self.DataInfoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notes">
+              <PropertyRef Name="NoteID" />
+            </Principal>
+            <Dependent Role="DataInfoes">
+              <PropertyRef Name="NoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gBudget2ModelStoreContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataInfoes" EntityType="Self.DataInfoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mechants" EntityType="Self.Mechants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__DataInfoe__Accou__35BCFE0A" Association="Self.FK__DataInfoe__Accou__35BCFE0A">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="DataInfoes" EntitySet="DataInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DataInfoe__Categ__34C8D9D1" Association="Self.FK__DataInfoe__Categ__34C8D9D1">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="DataInfoes" EntitySet="DataInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DataInfoe__Mecha__36B12243" Association="Self.FK__DataInfoe__Mecha__36B12243">
+            <End Role="Mechants" EntitySet="Mechants" />
+            <End Role="DataInfoes" EntitySet="DataInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DataInfoe__NoteI__37A5467C" Association="Self.FK__DataInfoe__NoteI__37A5467C">
+            <End Role="Notes" EntitySet="Notes" />
+            <End Role="DataInfoes" EntitySet="DataInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gBudget2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Account1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DataInfoes" Relationship="Self.FK__DataInfoe__Accou__35BCFE0A" FromRole="Accounts" ToRole="DataInfoes" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DataInfoes" Relationship="Self.FK__DataInfoe__Categ__34C8D9D1" FromRole="Categories" ToRole="DataInfoes" />
+        </EntityType>
+        <EntityType Name="DataInfo">
+          <Key>
+            <PropertyRef Name="DatainfoID" />
+          </Key>
+          <Property Name="DatainfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="MechantID" Type="Int32" />
+          <Property Name="NoteID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__DataInfoe__Accou__35BCFE0A" FromRole="DataInfoes" ToRole="Accounts" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__DataInfoe__Categ__34C8D9D1" FromRole="DataInfoes" ToRole="Categories" />
+          <NavigationProperty Name="Mechant" Relationship="Self.FK__DataInfoe__Mecha__36B12243" FromRole="DataInfoes" ToRole="Mechants" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__DataInfoe__NoteI__37A5467C" FromRole="DataInfoes" ToRole="Notes" />
+        </EntityType>
+        <EntityType Name="Mechant">
+          <Key>
+            <PropertyRef Name="MechantID" />
+          </Key>
+          <Property Name="MechantID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mechant1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DataInfoes" Relationship="Self.FK__DataInfoe__Mecha__36B12243" FromRole="Mechants" ToRole="DataInfoes" />
+        </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="NoteID" />
+          </Key>
+          <Property Name="NoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Note1" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DataInfoes" Relationship="Self.FK__DataInfoe__NoteI__37A5467C" FromRole="Notes" ToRole="DataInfoes" />
+        </EntityType>
+        <Association Name="FK__DataInfoe__Accou__35BCFE0A">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="DataInfoes" Type="Self.DataInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="DataInfoes">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DataInfoe__Categ__34C8D9D1">
+          <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="DataInfoes" Type="Self.DataInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="DataInfoes">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DataInfoe__Mecha__36B12243">
+          <End Role="Mechants" Type="Self.Mechant" Multiplicity="0..1" />
+          <End Role="DataInfoes" Type="Self.DataInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mechants">
+              <PropertyRef Name="MechantID" />
+            </Principal>
+            <Dependent Role="DataInfoes">
+              <PropertyRef Name="MechantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DataInfoe__NoteI__37A5467C">
+          <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
+          <End Role="DataInfoes" Type="Self.DataInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notes">
+              <PropertyRef Name="NoteID" />
+            </Principal>
+            <Dependent Role="DataInfoes">
+              <PropertyRef Name="NoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gBudget2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="DataInfoes" EntityType="Self.DataInfo" />
+          <EntitySet Name="Mechants" EntityType="Self.Mechant" />
+          <EntitySet Name="Notes" EntityType="Self.Note" />
+          <AssociationSet Name="FK__DataInfoe__Accou__35BCFE0A" Association="Self.FK__DataInfoe__Accou__35BCFE0A">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="DataInfoes" EntitySet="DataInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DataInfoe__Categ__34C8D9D1" Association="Self.FK__DataInfoe__Categ__34C8D9D1">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="DataInfoes" EntitySet="DataInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DataInfoe__Mecha__36B12243" Association="Self.FK__DataInfoe__Mecha__36B12243">
+            <End Role="Mechants" EntitySet="Mechants" />
+            <End Role="DataInfoes" EntitySet="DataInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DataInfoe__NoteI__37A5467C" Association="Self.FK__DataInfoe__NoteI__37A5467C">
+            <End Role="Notes" EntitySet="Notes" />
+            <End Role="DataInfoes" EntitySet="DataInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="gBudget2ModelStoreContainer" CdmEntityContainer="gBudget2Entities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="gBudget2Model.Account">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Account1" ColumnName="Account" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="gBudget2Model.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Category1" ColumnName="Category" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataInfoes">
+            <EntityTypeMapping TypeName="gBudget2Model.DataInfo">
+              <MappingFragment StoreEntitySet="DataInfoes">
+                <ScalarProperty Name="DatainfoID" ColumnName="DatainfoID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="MechantID" ColumnName="MechantID" />
+                <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mechants">
+            <EntityTypeMapping TypeName="gBudget2Model.Mechant">
+              <MappingFragment StoreEntitySet="Mechants">
+                <ScalarProperty Name="MechantID" ColumnName="MechantID" />
+                <ScalarProperty Name="Mechant1" ColumnName="Mechant" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notes">
+            <EntityTypeMapping TypeName="gBudget2Model.Note">
+              <MappingFragment StoreEntitySet="Notes">
+                <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+                <ScalarProperty Name="Note1" ColumnName="Note" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

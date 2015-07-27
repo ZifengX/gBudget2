@@ -1,0 +1,74 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="main.master.cs" Inherits="gBudget2.main" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>gBudget - Simple Budget Manager</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css' />
+</head>
+
+<body>
+    <div class="container">
+    <nav class="nav navbar-default" style="margin-bottom:20px">
+      <div class="container-fluid">
+        <a href="default.aspx" class="navbar-brand" style="font-family: 'Lobster', cursive; font-weight:bold;">gBudget</a>
+        
+        <ul class="nav navbar-nav">
+            <li><a href="default.aspx">Home</a></li>
+            <asp:PlaceHolder ID="plhPrivate" runat="server">
+                <li><a href="Bills.aspx">Bills</a></li>
+                <li><a href=".aspx">Reports</a> </li>
+                <li><a href="settings.aspx">Settings</a></li>
+            </asp:PlaceHolder>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a>About</a></li>
+            <asp:PlaceHolder ID="plhLogout" runat="server">
+                <li><a href="logout.aspx">Logout</a></li>
+            </asp:PlaceHolder>
+            <asp:PlaceHolder ID="plhPublic" runat="server">
+                <li><a href="login.aspx">Login</a></li>            
+                <li><a href="register.aspx">Register</a></li>
+            </asp:PlaceHolder>
+        </ul>
+        </div>
+    </nav>
+    <div class="container-fluid" style="margin-bottom:20px">    
+    <form id="mainForm" runat="server" class="form form-horizontal">
+    <div class="container">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</div>
+    <footer class="alert alert-info">
+        gBudget @ 2015
+    </footer>
+</div>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!--jQuery delete confirmation.  must go after main jquery link-->
+    <script type="text/javascript">
+       $(document).ready(function () {
+           jQuery("a").filter(function () {
+               return this.innerHTML.indexOf("Delete") == 0;
+           }).click(function () {
+               return confirm("Are you sure you want to delete this record?");
+           });
+       });
+
+   </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c94e41ceb05644d399ca11fdfd30bad6" Name="Diagram1">
+        <EntityTypeShape EntityType="gBudget2Model.Account" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gBudget2Model.Category" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gBudget2Model.DataInfo" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="gBudget2Model.Mechant" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gBudget2Model.Note" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <AssociationConnector Association="gBudget2Model.FK__DataInfoe__Accou__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="gBudget2Model.FK__DataInfoe__Categ__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="gBudget2Model.FK__DataInfoe__Mecha__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="gBudget2Model.FK__DataInfoe__NoteI__37A5467C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
