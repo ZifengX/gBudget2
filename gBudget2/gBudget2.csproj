@@ -100,6 +100,8 @@
   <ItemGroup>
     <Content Include="account.aspx" />
     <Content Include="accounts.aspx" />
+    <Content Include="bill.aspx" />
+    <Content Include="bills.aspx" />
     <Content Include="categories.aspx" />
     <Content Include="category.aspx" />
     <Content Include="default.aspx" />
@@ -125,6 +127,20 @@
     </Compile>
     <Compile Include="accounts.aspx.designer.cs">
       <DependentUpon>accounts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bill.aspx.cs">
+      <DependentUpon>bill.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bill.aspx.designer.cs">
+      <DependentUpon>bill.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bills.aspx.cs">
+      <DependentUpon>bills.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bills.aspx.designer.cs">
+      <DependentUpon>bills.aspx</DependentUpon>
     </Compile>
     <Compile Include="categories.aspx.cs">
       <DependentUpon>categories.aspx</DependentUpon>

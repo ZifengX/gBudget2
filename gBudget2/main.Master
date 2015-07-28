@@ -24,7 +24,7 @@
         <ul class="nav navbar-nav">
             <li><a href="default.aspx">Home</a></li>
             <asp:PlaceHolder ID="plhPrivate" runat="server">
-                <li><a href="Bills.aspx">Bills</a></li>
+                <li><a href="bills.aspx">Bills</a></li>
                 <li><a href=".aspx">Reports</a> </li>
                 <li><a href="settings.aspx">Settings</a></li>
             </asp:PlaceHolder>
