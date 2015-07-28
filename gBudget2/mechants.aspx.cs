@@ -11,32 +11,32 @@ using System.Linq.Dynamic;
 
 namespace gBudget2
 {
-    public partial class accounts : System.Web.UI.Page
+    public partial class mechants : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             //if loading the page for the first time, populate account grid
             if (!IsPostBack)
             {
-                Session["SortColumn"] = "AccountID";
+                Session["SortColumn"] = "MechantID";
                 Session["SortDirection"] = "ASC";
-                GetAccounts();
+                GetMechants();
             }
         }
 
-        protected void GetAccounts()
+        protected void GetMechants()
         {
             //connect to EF
             using (gBudget2Entities db = new gBudget2Entities())
             {
                 String SortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
-                //query the accounts table using EF and LINQ
-                var Accounts = from a in db.Accounts
-                               select a;
+                //query the mechants table using EF and LINQ
+                var Mechants = from m in db.Mechants
+                               select m;
 
                 //bind the result to the gridview
-                grdAccounts.DataSource = Accounts.AsQueryable().OrderBy(SortString).ToList();
-                grdAccounts.DataBind();
+                grdMechants.DataSource = Mechants.AsQueryable().OrderBy(SortString).ToList();
+                grdMechants.DataBind();
 
             }
         }
@@ -44,50 +44,48 @@ namespace gBudget2
         protected void ddlPageSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             //set new pagesize
-            grdAccounts.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
-            GetAccounts();
+            grdMechants.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
+            GetMechants();
         }
 
-
-        protected void grdAccounts_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void grdMechants_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             //store which row was clicked
             Int32 selectedRow = e.RowIndex;
 
-            //get the selected AccountID using the grid's Data Key collection
-            Int32 AccountID = Convert.ToInt32(grdAccounts.DataKeys[selectedRow].Values["AccountID"]);
+            //get the selected mechantID using the grid's Data Key collection
+            Int32 MechantID = Convert.ToInt32(grdMechants.DataKeys[selectedRow].Values["MechantID"]);
 
-            //use EF to remove the selected account from the db
+            //use EF to remove the selected mechant from the db
             using (gBudget2Entities db = new gBudget2Entities())
             {
 
-                Account a = (from objA in db.Accounts
-                             where objA.AccountID == AccountID
-                             select objA).FirstOrDefault();
+                Mechant m = (from objM in db.Mechants
+                             where objM.MechantID == MechantID
+                             select objM).FirstOrDefault();
 
                 //do the delete
-                db.Accounts.Remove(a);
+                db.Mechants.Remove(m);
                 db.SaveChanges();
             }
 
             //refresh the grid
-            GetAccounts();
+            GetMechants();
         }
 
-        
-        protected void grdAccounts_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void grdMechants_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             //set the new page #
-            grdAccounts.PageIndex = e.NewPageIndex;
-            GetAccounts();
+            grdMechants.PageIndex = e.NewPageIndex;
+            GetMechants();
         }
 
-        protected void grdAccounts_Sorting(object sender, GridViewSortEventArgs e)
+        protected void grdMechants_Sorting(object sender, GridViewSortEventArgs e)
         {
             //get the column to sort by
             Session["SortColumn"] = e.SortExpression;
             //reload the grid
-            GetAccounts();
+            GetMechants();
 
             //toggle the direction
             if (Session["SortDirection"].ToString() == "ASC")
@@ -100,7 +98,7 @@ namespace gBudget2
             }
         }
 
-        protected void grdAccounts_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void grdMechants_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (IsPostBack)
             {
@@ -108,9 +106,9 @@ namespace gBudget2
                 {
                     Image SortImage = new Image();
 
-                    for (int i = 0; i <= grdAccounts.Columns.Count - 1; i++)
+                    for (int i = 0; i <= grdMechants.Columns.Count - 1; i++)
                     {
-                        if (grdAccounts.Columns[i].SortExpression == Session["SortColumn"].ToString())
+                        if (grdMechants.Columns[i].SortExpression == Session["SortColumn"].ToString())
                         {
                             if (Session["SortDirection"].ToString() == "DESC")
                             {

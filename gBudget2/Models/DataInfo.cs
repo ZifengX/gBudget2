@@ -19,13 +19,12 @@ namespace gBudget2.Models
         public Nullable<int> CategoryID { get; set; }
         public Nullable<int> AccountID { get; set; }
         public Nullable<int> MechantID { get; set; }
-        public Nullable<int> NoteID { get; set; }
+        public string Note { get; set; }
         public int UserID { get; set; }
         public System.DateTime Date { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual Category Category { get; set; }
         public virtual Mechant Mechant { get; set; }
-        public virtual Note Note { get; set; }
     }
 }

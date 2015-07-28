@@ -11,83 +11,81 @@ using System.Linq.Dynamic;
 
 namespace gBudget2
 {
-    public partial class accounts : System.Web.UI.Page
+    public partial class categories : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if loading the page for the first time, populate account grid
+            //if loading the page for the first time, populate category grid
             if (!IsPostBack)
             {
-                Session["SortColumn"] = "AccountID";
+                Session["SortColumn"] = "CategoryID";
                 Session["SortDirection"] = "ASC";
-                GetAccounts();
+                GetCategories();
             }
         }
 
-        protected void GetAccounts()
+        protected void GetCategories()
         {
             //connect to EF
             using (gBudget2Entities db = new gBudget2Entities())
             {
                 String SortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
-                //query the accounts table using EF and LINQ
-                var Accounts = from a in db.Accounts
-                               select a;
+                //query the categories table using EF and LINQ
+                var Categories = from c in db.Categories
+                               select c;
 
                 //bind the result to the gridview
-                grdAccounts.DataSource = Accounts.AsQueryable().OrderBy(SortString).ToList();
-                grdAccounts.DataBind();
+                grdCategories.DataSource = Categories.AsQueryable().OrderBy(SortString).ToList();
+                grdCategories.DataBind();
 
             }
         }
 
-        protected void ddlPageSize_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //set new pagesize
-            grdAccounts.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
-            GetAccounts();
-        }
-
-
-        protected void grdAccounts_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void grdCategories_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             //store which row was clicked
             Int32 selectedRow = e.RowIndex;
 
-            //get the selected AccountID using the grid's Data Key collection
-            Int32 AccountID = Convert.ToInt32(grdAccounts.DataKeys[selectedRow].Values["AccountID"]);
+            //get the selected categoryid using the grid's Data Key collection
+            Int32 CategoryID = Convert.ToInt32(grdCategories.DataKeys[selectedRow].Values["CategoryID"]);
 
             //use EF to remove the selected account from the db
             using (gBudget2Entities db = new gBudget2Entities())
             {
 
-                Account a = (from objA in db.Accounts
-                             where objA.AccountID == AccountID
-                             select objA).FirstOrDefault();
+                Category c = (from objC in db.Categories
+                             where objC.CategoryID == CategoryID
+                             select objC).FirstOrDefault();
 
                 //do the delete
-                db.Accounts.Remove(a);
+                db.Categories.Remove(c);
                 db.SaveChanges();
             }
 
             //refresh the grid
-            GetAccounts();
+            GetCategories();
         }
 
-        
-        protected void grdAccounts_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void ddlPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //set new pagesize
+            grdCategories.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
+            GetCategories();
+        }
+
+        protected void grdCategories_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             //set the new page #
-            grdAccounts.PageIndex = e.NewPageIndex;
-            GetAccounts();
+            grdCategories.PageIndex = e.NewPageIndex;
+            GetCategories();
         }
 
-        protected void grdAccounts_Sorting(object sender, GridViewSortEventArgs e)
+        protected void grdCategories_Sorting(object sender, GridViewSortEventArgs e)
         {
             //get the column to sort by
             Session["SortColumn"] = e.SortExpression;
             //reload the grid
-            GetAccounts();
+            GetCategories();
 
             //toggle the direction
             if (Session["SortDirection"].ToString() == "ASC")
@@ -100,7 +98,7 @@ namespace gBudget2
             }
         }
 
-        protected void grdAccounts_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void grdCategories_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (IsPostBack)
             {
@@ -108,9 +106,9 @@ namespace gBudget2
                 {
                     Image SortImage = new Image();
 
-                    for (int i = 0; i <= grdAccounts.Columns.Count - 1; i++)
+                    for (int i = 0; i <= grdCategories.Columns.Count - 1; i++)
                     {
-                        if (grdAccounts.Columns[i].SortExpression == Session["SortColumn"].ToString())
+                        if (grdCategories.Columns[i].SortExpression == Session["SortColumn"].ToString())
                         {
                             if (Session["SortDirection"].ToString() == "DESC")
                             {

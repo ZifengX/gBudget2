@@ -29,6 +29,5 @@ namespace gBudget2.Models
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<DataInfo> DataInfoes { get; set; }
         public virtual DbSet<Mechant> Mechants { get; set; }
-        public virtual DbSet<Note> Notes { get; set; }
     }
 }

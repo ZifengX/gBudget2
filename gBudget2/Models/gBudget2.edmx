@@ -30,7 +30,7 @@
           <Property Name="CategoryID" Type="int" />
           <Property Name="AccountID" Type="int" />
           <Property Name="MechantID" Type="int" />
-          <Property Name="NoteID" Type="int" />
+          <Property Name="Note" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
         </EntityType>
@@ -42,15 +42,7 @@
           <Property Name="Mechant" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Notes">
-          <Key>
-            <PropertyRef Name="NoteID" />
-          </Key>
-          <Property Name="NoteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Note" Type="varchar" MaxLength="2000" Nullable="false" />
-          <Property Name="UserID" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="FK__DataInfoe__Accou__35BCFE0A">
+        <Association Name="FK__DataInfoe__Accou__3B75D760">
           <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
           <End Role="DataInfoes" Type="Self.DataInfoes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -62,7 +54,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DataInfoe__Categ__34C8D9D1">
+        <Association Name="FK__DataInfoe__Categ__3A81B327">
           <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
           <End Role="DataInfoes" Type="Self.DataInfoes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -74,7 +66,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DataInfoe__Mecha__36B12243">
+        <Association Name="FK__DataInfoe__Mecha__3C69FB99">
           <End Role="Mechants" Type="Self.Mechants" Multiplicity="0..1" />
           <End Role="DataInfoes" Type="Self.DataInfoes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -86,38 +78,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DataInfoe__NoteI__37A5467C">
-          <End Role="Notes" Type="Self.Notes" Multiplicity="0..1" />
-          <End Role="DataInfoes" Type="Self.DataInfoes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Notes">
-              <PropertyRef Name="NoteID" />
-            </Principal>
-            <Dependent Role="DataInfoes">
-              <PropertyRef Name="NoteID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="gBudget2ModelStoreContainer">
           <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DataInfoes" EntityType="Self.DataInfoes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mechants" EntityType="Self.Mechants" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__DataInfoe__Accou__35BCFE0A" Association="Self.FK__DataInfoe__Accou__35BCFE0A">
+          <AssociationSet Name="FK__DataInfoe__Accou__3B75D760" Association="Self.FK__DataInfoe__Accou__3B75D760">
             <End Role="Accounts" EntitySet="Accounts" />
             <End Role="DataInfoes" EntitySet="DataInfoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__DataInfoe__Categ__34C8D9D1" Association="Self.FK__DataInfoe__Categ__34C8D9D1">
+          <AssociationSet Name="FK__DataInfoe__Categ__3A81B327" Association="Self.FK__DataInfoe__Categ__3A81B327">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="DataInfoes" EntitySet="DataInfoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__DataInfoe__Mecha__36B12243" Association="Self.FK__DataInfoe__Mecha__36B12243">
+          <AssociationSet Name="FK__DataInfoe__Mecha__3C69FB99" Association="Self.FK__DataInfoe__Mecha__3C69FB99">
             <End Role="Mechants" EntitySet="Mechants" />
-            <End Role="DataInfoes" EntitySet="DataInfoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DataInfoe__NoteI__37A5467C" Association="Self.FK__DataInfoe__NoteI__37A5467C">
-            <End Role="Notes" EntitySet="Notes" />
             <End Role="DataInfoes" EntitySet="DataInfoes" />
           </AssociationSet>
         </EntityContainer>
@@ -133,7 +108,7 @@
           <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Account1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DataInfoes" Relationship="Self.FK__DataInfoe__Accou__35BCFE0A" FromRole="Accounts" ToRole="DataInfoes" />
+          <NavigationProperty Name="DataInfoes" Relationship="Self.FK__DataInfoe__Accou__3B75D760" FromRole="Accounts" ToRole="DataInfoes" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -142,7 +117,7 @@
           <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Category1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DataInfoes" Relationship="Self.FK__DataInfoe__Categ__34C8D9D1" FromRole="Categories" ToRole="DataInfoes" />
+          <NavigationProperty Name="DataInfoes" Relationship="Self.FK__DataInfoe__Categ__3A81B327" FromRole="Categories" ToRole="DataInfoes" />
         </EntityType>
         <EntityType Name="DataInfo">
           <Key>
@@ -153,13 +128,12 @@
           <Property Name="CategoryID" Type="Int32" />
           <Property Name="AccountID" Type="Int32" />
           <Property Name="MechantID" Type="Int32" />
-          <Property Name="NoteID" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__DataInfoe__Accou__35BCFE0A" FromRole="DataInfoes" ToRole="Accounts" />
-          <NavigationProperty Name="Category" Relationship="Self.FK__DataInfoe__Categ__34C8D9D1" FromRole="DataInfoes" ToRole="Categories" />
-          <NavigationProperty Name="Mechant" Relationship="Self.FK__DataInfoe__Mecha__36B12243" FromRole="DataInfoes" ToRole="Mechants" />
-          <NavigationProperty Name="Note" Relationship="Self.FK__DataInfoe__NoteI__37A5467C" FromRole="DataInfoes" ToRole="Notes" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__DataInfoe__Accou__3B75D760" FromRole="DataInfoes" ToRole="Accounts" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__DataInfoe__Categ__3A81B327" FromRole="DataInfoes" ToRole="Categories" />
+          <NavigationProperty Name="Mechant" Relationship="Self.FK__DataInfoe__Mecha__3C69FB99" FromRole="DataInfoes" ToRole="Mechants" />
         </EntityType>
         <EntityType Name="Mechant">
           <Key>
@@ -168,18 +142,9 @@
           <Property Name="MechantID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Mechant1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DataInfoes" Relationship="Self.FK__DataInfoe__Mecha__36B12243" FromRole="Mechants" ToRole="DataInfoes" />
+          <NavigationProperty Name="DataInfoes" Relationship="Self.FK__DataInfoe__Mecha__3C69FB99" FromRole="Mechants" ToRole="DataInfoes" />
         </EntityType>
-        <EntityType Name="Note">
-          <Key>
-            <PropertyRef Name="NoteID" />
-          </Key>
-          <Property Name="NoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Note1" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DataInfoes" Relationship="Self.FK__DataInfoe__NoteI__37A5467C" FromRole="Notes" ToRole="DataInfoes" />
-        </EntityType>
-        <Association Name="FK__DataInfoe__Accou__35BCFE0A">
+        <Association Name="FK__DataInfoe__Accou__3B75D760">
           <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
           <End Role="DataInfoes" Type="Self.DataInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -191,7 +156,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DataInfoe__Categ__34C8D9D1">
+        <Association Name="FK__DataInfoe__Categ__3A81B327">
           <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
           <End Role="DataInfoes" Type="Self.DataInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -203,7 +168,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DataInfoe__Mecha__36B12243">
+        <Association Name="FK__DataInfoe__Mecha__3C69FB99">
           <End Role="Mechants" Type="Self.Mechant" Multiplicity="0..1" />
           <End Role="DataInfoes" Type="Self.DataInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -215,38 +180,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DataInfoe__NoteI__37A5467C">
-          <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
-          <End Role="DataInfoes" Type="Self.DataInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Notes">
-              <PropertyRef Name="NoteID" />
-            </Principal>
-            <Dependent Role="DataInfoes">
-              <PropertyRef Name="NoteID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="gBudget2Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accounts" EntityType="Self.Account" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="DataInfoes" EntityType="Self.DataInfo" />
           <EntitySet Name="Mechants" EntityType="Self.Mechant" />
-          <EntitySet Name="Notes" EntityType="Self.Note" />
-          <AssociationSet Name="FK__DataInfoe__Accou__35BCFE0A" Association="Self.FK__DataInfoe__Accou__35BCFE0A">
+          <AssociationSet Name="FK__DataInfoe__Accou__3B75D760" Association="Self.FK__DataInfoe__Accou__3B75D760">
             <End Role="Accounts" EntitySet="Accounts" />
             <End Role="DataInfoes" EntitySet="DataInfoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__DataInfoe__Categ__34C8D9D1" Association="Self.FK__DataInfoe__Categ__34C8D9D1">
+          <AssociationSet Name="FK__DataInfoe__Categ__3A81B327" Association="Self.FK__DataInfoe__Categ__3A81B327">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="DataInfoes" EntitySet="DataInfoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__DataInfoe__Mecha__36B12243" Association="Self.FK__DataInfoe__Mecha__36B12243">
+          <AssociationSet Name="FK__DataInfoe__Mecha__3C69FB99" Association="Self.FK__DataInfoe__Mecha__3C69FB99">
             <End Role="Mechants" EntitySet="Mechants" />
-            <End Role="DataInfoes" EntitySet="DataInfoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DataInfoe__NoteI__37A5467C" Association="Self.FK__DataInfoe__NoteI__37A5467C">
-            <End Role="Notes" EntitySet="Notes" />
             <End Role="DataInfoes" EntitySet="DataInfoes" />
           </AssociationSet>
         </EntityContainer>
@@ -282,7 +230,7 @@
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="AccountID" ColumnName="AccountID" />
                 <ScalarProperty Name="MechantID" ColumnName="MechantID" />
-                <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
               </MappingFragment>
@@ -293,15 +241,6 @@
               <MappingFragment StoreEntitySet="Mechants">
                 <ScalarProperty Name="MechantID" ColumnName="MechantID" />
                 <ScalarProperty Name="Mechant1" ColumnName="Mechant" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Notes">
-            <EntityTypeMapping TypeName="gBudget2Model.Note">
-              <MappingFragment StoreEntitySet="Notes">
-                <ScalarProperty Name="NoteID" ColumnName="NoteID" />
-                <ScalarProperty Name="Note1" ColumnName="Note" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>

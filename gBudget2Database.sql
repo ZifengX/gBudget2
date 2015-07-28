@@ -1,4 +1,8 @@
-﻿	CREATE TABLE [dbo].[Categories](
+﻿	DROP TABLE DataInfoes;
+	DROP TABLE Notes;
+
+
+	CREATE TABLE [dbo].[Categories](
 	[CategoryID] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	[Category] [varchar] (50) NOT NULL,
 	[UserID] [int] NOT NULL
@@ -27,16 +31,6 @@ CREATE TABLE [dbo].[Mechants](
 	insert into Mechants (Mechant, UserID) values ('Freshco', 1);
 	insert into Mechants (Mechant, UserID) values ('Nofrills', 1);
 
-CREATE TABLE [dbo].[Notes] (
-	[NoteID] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	[Note] [varchar] (2000) NOT NULL,
-	[UserID] [int] NOT NULL);
-
-	insert into Notes (Note, UserID) values ('First Note', 1);
-	insert into Notes (Note, UserID) values ('Second Note', 1);
-	insert into Notes (Note, UserID) values ('Third Note', 1);
-
-
 
 CREATE TABLE [dbo].[DataInfoes](
 	[DatainfoID] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
@@ -44,15 +38,15 @@ CREATE TABLE [dbo].[DataInfoes](
 	[CategoryID] [int] FOREIGN KEY REFERENCES Categories(CategoryID),
 	[AccountID] [int] FOREIGN KEY REFERENCES Accounts(AccountID),
 	[MechantID] [int] FOREIGN KEY REFERENCES Mechants(MechantID),
-	[NoteID] [int] FOREIGN KEY REFERENCES Notes(NoteID),
+	[Note] [varchar] (100) NOT NULL,
 	[UserID] [int] NOT NULL,
 	[Date] DATE NOT NULL)
 
-	insert into DataInfoes (Amount, CategoryID, AccountID, MechantID, NoteID, UserID, Date)
-	values (1000, 1, 1, 1, 1, 1, '2015-7-25');
+	insert into DataInfoes (Amount, CategoryID, AccountID, MechantID, Note, UserID, Date)
+	values (1000, 1, 1, 1, 'First Note', 1, '2015-7-25');
 
-	insert into DataInfoes (Amount, CategoryID, AccountID, MechantID, NoteID, UserID, Date)
-	values (2000, 2, 2, 2, 2, 1, '2015-7-26');
+	insert into DataInfoes (Amount, CategoryID, AccountID, MechantID, Note, UserID, Date)
+	values (2000, 2, 2, 2, 'Second Note', 1, '2015-7-26');
 
-	insert into DataInfoes (Amount, CategoryID, AccountID, MechantID, NoteID, UserID, Date)
-	values (3000, 2, 3, 2, 3, 1, '2015-7-27');
+	insert into DataInfoes (Amount, CategoryID, AccountID, MechantID, Note, UserID, Date)
+	values (3000, 2, 3, 2, 'Third Note', 1, '2015-7-27');
