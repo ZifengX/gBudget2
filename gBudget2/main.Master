@@ -42,7 +42,8 @@
         </ul>
         </div>
     </nav>
-    <div class="container-fluid" style="margin-bottom:20px">    
+
+<div class="container-fluid" style="margin-bottom:20px">    
     <form id="mainForm" runat="server" class="form form-horizontal">
     <div class="container">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -51,6 +52,7 @@
     </div>
     </form>
 </div>
+
     <footer class="alert alert-info">
         gBudget @ 2015
     </footer>
