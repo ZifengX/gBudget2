@@ -12,17 +12,16 @@ namespace gBudget2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
+    public partial class AspNetRole
     {
-        public Account()
+        public AspNetRole()
         {
-            this.DataInfoes = new HashSet<DataInfo>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
-        public int AccountID { get; set; }
-        public string Account1 { get; set; }
-        public string UserID { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     
-        public virtual ICollection<DataInfo> DataInfoes { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

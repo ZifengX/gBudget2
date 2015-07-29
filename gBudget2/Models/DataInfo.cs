@@ -20,7 +20,7 @@ namespace gBudget2.Models
         public Nullable<int> AccountID { get; set; }
         public Nullable<int> MechantID { get; set; }
         public string Note { get; set; }
-        public int UserID { get; set; }
+        public string UserID { get; set; }
         public System.DateTime Date { get; set; }
     
         public virtual Account Account { get; set; }

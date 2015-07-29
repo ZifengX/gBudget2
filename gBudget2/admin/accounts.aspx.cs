@@ -8,6 +8,9 @@ using System.Web.UI.WebControls;
 using gBudget2.Models;
 using System.Web.ModelBinding;
 using System.Linq.Dynamic;
+//auth references
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace gBudget2
 {
@@ -26,12 +29,14 @@ namespace gBudget2
 
         protected void GetAccounts()
         {
+            var currentUserID = User.Identity.GetUserId();
             //connect to EF
             using (gBudget2Entities db = new gBudget2Entities())
             {
                 String SortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
                 //query the accounts table using EF and LINQ
                 var Accounts = from a in db.Accounts
+                               where a.UserID == currentUserID
                                select a;
 
                 //bind the result to the gridview
@@ -114,12 +119,12 @@ namespace gBudget2
                         {
                             if (Session["SortDirection"].ToString() == "DESC")
                             {
-                                SortImage.ImageUrl = "images/desc.jpg";
+                                SortImage.ImageUrl = "/images/desc.jpg";
                                 SortImage.AlternateText = "Sort Descending";
                             }
                             else
                             {
-                                SortImage.ImageUrl = "images/asc.jpg";
+                                SortImage.ImageUrl = "/images/asc.jpg";
                                 SortImage.AlternateText = "Sort Ascending";
                             }
 

@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 //model references for EF
 using gBudget2.Models;
 using System.Web.ModelBinding;
+//auth references
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace gBudget2
 {
@@ -65,21 +68,13 @@ namespace gBudget2
                     txtNote.Text = d.Note;
                     txtDate.Text = d.Date.ToString("yyyy-MM-dd");
                 }
-
-                //var objE = (from en in db.Enrollments
-                //            join s in db.Students on en.StudentID equals s.StudentID
-                //            join d in db.Departments on c.DepartmentID equals d.DepartmentID
-                //            where en.CourseID == CourseID
-                //            select new { en.EnrollmentID, en.Grade, s.LastName, s.FirstMidName, s.EnrollmentDate });
-
-                //grdStudents.DataSource = objE.ToList();
-                //grdStudents.DataBind();
             }
 
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            var currentUserID = User.Identity.GetUserId();
             //use EF to connect to SQL Server
             using (gBudget2Entities db = new gBudget2Entities())
             {
@@ -106,6 +101,7 @@ namespace gBudget2
                 d.MechantID = Convert.ToInt32(ddlMechant.SelectedValue);
                 d.Note = txtNote.Text;
                 d.Date = Convert.ToDateTime(txtDate.Text);
+                d.UserID = currentUserID;
 
                 //call add only if we have no datainfo ID
                 if (DatainfoID == 0)

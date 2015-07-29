@@ -7,7 +7,9 @@ using System.Web.UI.WebControls;
 //model references for EF
 using gBudget2.Models;
 using System.Web.ModelBinding;
-
+//auth references
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace gBudget2
 {
@@ -24,37 +26,30 @@ namespace gBudget2
 
         protected void GetReports()
         {
+            var currentUserID = User.Identity.GetUserId();
+
             using (gBudget2Entities db = new gBudget2Entities())
             {
                 //query the datainfo table using EF and LINQ
                 var Categories = from c in db.Categories
+                                 where c.UserID == currentUserID
                                  select c;
 
                 //bind the result to the gridview
                 ddlCategoryReport.DataSource = Categories.ToList();
                 ddlCategoryReport.DataBind();
 
-                int selectedCategory = Convert.ToInt32(ddlCategoryReport.SelectedValue);
-
+                if (ddlCategoryReport.SelectedValue != "") { 
+                    int selectedCategory = Convert.ToInt32(ddlCategoryReport.SelectedValue);
+                
                 //query the bills table using EF and LINQ
                 var Datainfoes = from d in db.DataInfoes
-                                 where d.CategoryID == selectedCategory
-                                 select new { d.Date, d.Amount, d.Account.Account1, d.Mechant.Mechant1, d.Note };
-
+                                 where d.CategoryID == selectedCategory && d.UserID == currentUserID
+                                 select new { d.Date, d.Amount, d.Account.Account1, d.Mechant.Mechant1, d.Note, d.UserID };
+                
                 grdCategoryReport.DataSource = Datainfoes.ToList();
                 grdCategoryReport.DataBind();
-
-
-                //var Accounts = from a in db.Accounts
-                //               select a;
-
-                //ddlAccount.DataSource = Accounts.ToList();
-                //ddlAccount.DataBind();
-
-                //var Mechants = from m in db.Mechants
-                //               select m;
-                //ddlMechant.DataSource = Mechants.ToList();
-                //ddlMechant.DataBind();
+                }
             }
         }
 

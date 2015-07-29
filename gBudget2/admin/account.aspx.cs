@@ -7,6 +7,10 @@ using System.Web.UI.WebControls;
 //model references for EF
 using gBudget2.Models;
 using System.Web.ModelBinding;
+//auth references
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+
 
 namespace gBudget2
 {
@@ -23,6 +27,7 @@ namespace gBudget2
 
         protected void GetAccount()
         {
+           
             //populate form with existing account record
             Int32 AccountID = Convert.ToInt32(Request.QueryString["AccountID"]);
 
@@ -39,22 +44,13 @@ namespace gBudget2
                 {
                     txtAccount.Text = a.Account1;
                 }
-
-                ////enrollments - this code goes in the same method that populates the student form but below the existing code that's already in GetStudent()               
-                //var objE = (from en in db.Enrollments
-                //            join c in db.Courses on en.CourseID equals c.CourseID
-                //            join d in db.Departments on c.DepartmentID equals d.DepartmentID
-                //            where en.StudentID == StudentID
-                //            select new { en.EnrollmentID, en.Grade, c.Title, d.Name });
-
-                //grdCourses.DataSource = objE.ToList();
-                //grdCourses.DataBind();
             }
 
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            var currentUserID = User.Identity.GetUserId();
             //use EF to connect to SQL Server
             using (gBudget2Entities db = new gBudget2Entities())
             {
@@ -76,7 +72,7 @@ namespace gBudget2
                 }
 
                 a.Account1 = txtAccount.Text;
-
+                a.UserID = currentUserID;
 
                 //call add only if we have no account ID
                 if (AccountID == 0)

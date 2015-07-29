@@ -21,7 +21,7 @@ namespace gBudget2.Models
     
         public int CategoryID { get; set; }
         public string Category1 { get; set; }
-        public int UserID { get; set; }
+        public string UserID { get; set; }
     
         public virtual ICollection<DataInfo> DataInfoes { get; set; }
     }

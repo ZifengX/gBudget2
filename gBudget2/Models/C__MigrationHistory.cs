@@ -12,17 +12,11 @@ namespace gBudget2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
+    public partial class C__MigrationHistory
     {
-        public Account()
-        {
-            this.DataInfoes = new HashSet<DataInfo>();
-        }
-    
-        public int AccountID { get; set; }
-        public string Account1 { get; set; }
-        public string UserID { get; set; }
-    
-        public virtual ICollection<DataInfo> DataInfoes { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }

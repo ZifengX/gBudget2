@@ -4,14 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8dc7d2849acd42099f5807beb6eb207f" Name="Diagram1">
+      <Diagram DiagramId="0c5a1dd9e49349e185a546bdfd12dc92" Name="Diagram1">
+        <EntityTypeShape EntityType="gBudget2Model.C__MigrationHistory" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="gBudget2Model.Account" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gBudget2Model.AspNetRole" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="gBudget2Model.AspNetUserClaim" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="gBudget2Model.AspNetUserLogin" Width="1.5" PointX="10.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gBudget2Model.AspNetUser" Width="1.5" PointX="8" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="gBudget2Model.Category" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="gBudget2Model.DataInfo" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="gBudget2Model.Mechant" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
         <AssociationConnector Association="gBudget2Model.FK__DataInfoe__Accou__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="gBudget2Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="gBudget2Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="gBudget2Model.FK__DataInfoe__Categ__3A81B327" ManuallyRouted="false" />
         <AssociationConnector Association="gBudget2Model.FK__DataInfoe__Mecha__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="gBudget2Model.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

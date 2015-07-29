@@ -12,17 +12,13 @@ namespace gBudget2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
+    public partial class AspNetUserClaim
     {
-        public Account()
-        {
-            this.DataInfoes = new HashSet<DataInfo>();
-        }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
     
-        public int AccountID { get; set; }
-        public string Account1 { get; set; }
-        public string UserID { get; set; }
-    
-        public virtual ICollection<DataInfo> DataInfoes { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

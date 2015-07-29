@@ -23,7 +23,7 @@ namespace gBudget2
             var userStore = new UserStore<IdentityUser>();
             var userManager = new UserManager<IdentityUser>(userStore);
             var user = userManager.Find(txtUsername.Text, txtPassword.Text);
-
+         
             if (user != null)
             {
                 var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;

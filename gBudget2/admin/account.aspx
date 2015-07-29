@@ -15,16 +15,4 @@
              OnClick="btnSave_Click" />
     </div>
 
-    <%--<h2>Courses</h2>
-    <asp:GridView ID="grdCourses" runat="server" AutoGenerateColumns="false"
-        DataKeyNames="EnrollmentID" OnRowDeleting="grdCourses_RowDeleting"
-        CssClass="table table-striped table-hover">
-        <Columns>
-            <asp:BoundField DataField="Name" HeaderText="Department" />
-            <asp:BoundField DataField="Title" HeaderText="Course" />
-            <asp:BoundField DataField="Grade" HeaderText="Grade" />
-            <asp:CommandField ShowDeleteButton="true" DeleteText="Delete" HeaderText="Delete" />
-        </Columns>
-    </asp:GridView>--%>
-
 </asp:Content>
