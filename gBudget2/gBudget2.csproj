@@ -46,7 +46,47 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Linq.Dynamic, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Linq.Dynamic.1.0.4\lib\net40\System.Linq.Dynamic.dll</HintPath>
       <Private>True</Private>
@@ -98,63 +138,66 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="account.aspx" />
-    <Content Include="accounts.aspx" />
-    <Content Include="bill.aspx" />
-    <Content Include="bills.aspx" />
-    <Content Include="categories.aspx" />
-    <Content Include="category.aspx" />
+    <Content Include="admin\account.aspx" />
+    <Content Include="admin\accounts.aspx" />
+    <Content Include="admin\bill.aspx" />
+    <Content Include="admin\bills.aspx" />
+    <Content Include="admin\categories.aspx" />
+    <Content Include="admin\category.aspx" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\asc.jpg" />
     <Content Include="images\desc.jpg" />
-    <Content Include="mechant.aspx" />
-    <Content Include="mechants.aspx" />
-    <Content Include="reports.aspx" />
-    <Content Include="settings.aspx" />
+    <Content Include="login.aspx" />
+    <Content Include="logout.aspx" />
+    <Content Include="admin\mechant.aspx" />
+    <Content Include="admin\mechants.aspx" />
+    <Content Include="register.aspx" />
+    <Content Include="admin\reports.aspx" />
+    <Content Include="admin\settings.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="account.aspx.cs">
+    <Compile Include="admin\account.aspx.cs">
       <DependentUpon>account.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="account.aspx.designer.cs">
+    <Compile Include="admin\account.aspx.designer.cs">
       <DependentUpon>account.aspx</DependentUpon>
     </Compile>
-    <Compile Include="accounts.aspx.cs">
+    <Compile Include="admin\accounts.aspx.cs">
       <DependentUpon>accounts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="accounts.aspx.designer.cs">
+    <Compile Include="admin\accounts.aspx.designer.cs">
       <DependentUpon>accounts.aspx</DependentUpon>
     </Compile>
-    <Compile Include="bill.aspx.cs">
+    <Compile Include="admin\bill.aspx.cs">
       <DependentUpon>bill.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="bill.aspx.designer.cs">
+    <Compile Include="admin\bill.aspx.designer.cs">
       <DependentUpon>bill.aspx</DependentUpon>
     </Compile>
-    <Compile Include="bills.aspx.cs">
+    <Compile Include="admin\bills.aspx.cs">
       <DependentUpon>bills.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="bills.aspx.designer.cs">
+    <Compile Include="admin\bills.aspx.designer.cs">
       <DependentUpon>bills.aspx</DependentUpon>
     </Compile>
-    <Compile Include="categories.aspx.cs">
+    <Compile Include="admin\categories.aspx.cs">
       <DependentUpon>categories.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="categories.aspx.designer.cs">
+    <Compile Include="admin\categories.aspx.designer.cs">
       <DependentUpon>categories.aspx</DependentUpon>
     </Compile>
-    <Compile Include="category.aspx.cs">
+    <Compile Include="admin\category.aspx.cs">
       <DependentUpon>category.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="category.aspx.designer.cs">
+    <Compile Include="admin\category.aspx.designer.cs">
       <DependentUpon>category.aspx</DependentUpon>
     </Compile>
     <Compile Include="default.aspx.cs">
@@ -167,6 +210,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="main.Master.cs">
       <DependentUpon>main.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -174,18 +231,18 @@
     <Compile Include="main.Master.designer.cs">
       <DependentUpon>main.Master</DependentUpon>
     </Compile>
-    <Compile Include="mechant.aspx.cs">
+    <Compile Include="admin\mechant.aspx.cs">
       <DependentUpon>mechant.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="mechant.aspx.designer.cs">
+    <Compile Include="admin\mechant.aspx.designer.cs">
       <DependentUpon>mechant.aspx</DependentUpon>
     </Compile>
-    <Compile Include="mechants.aspx.cs">
+    <Compile Include="admin\mechants.aspx.cs">
       <DependentUpon>mechants.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="mechants.aspx.designer.cs">
+    <Compile Include="admin\mechants.aspx.designer.cs">
       <DependentUpon>mechants.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs">
@@ -215,19 +272,27 @@
     <Compile Include="Models\Mechant.cs">
       <DependentUpon>gBudget2.tt</DependentUpon>
     </Compile>
+    <Compile Include="OWINStartup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="reports.aspx.cs">
+    <Compile Include="register.aspx.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="register.aspx.designer.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\reports.aspx.cs">
       <DependentUpon>reports.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="reports.aspx.designer.cs">
+    <Compile Include="admin\reports.aspx.designer.cs">
       <DependentUpon>reports.aspx</DependentUpon>
     </Compile>
-    <Compile Include="settings.aspx.cs">
+    <Compile Include="admin\settings.aspx.cs">
       <DependentUpon>settings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="settings.aspx.designer.cs">
+    <Compile Include="admin\settings.aspx.designer.cs">
       <DependentUpon>settings.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

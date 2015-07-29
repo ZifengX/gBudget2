@@ -19,37 +19,35 @@
     <div class="container">
     <nav class="nav navbar-default" style="margin-bottom:20px">
       <div class="container-fluid">
-        <a href="default.aspx" class="navbar-brand" style="font-family: 'Lobster', cursive; font-weight:bold;">gBudget</a>
+        <a href="/default.aspx" class="navbar-brand" style="font-family: 'Lobster', cursive; font-weight:bold;">gBudget</a>
         
         <ul class="nav navbar-nav">
-            <li><a href="default.aspx">Home</a></li>
+            <li><a href="/default.aspx">Home</a></li>
             <asp:PlaceHolder ID="plhPrivate" runat="server">
-                <li><a href="bills.aspx">Bills</a></li>
-                <li><a href=".aspx">Reports</a> </li>
-                <li><a href="settings.aspx">Settings</a></li>
+                <li><a href="/admin/bills.aspx">Bills</a></li>
+                <li><a href="/admin/reports.aspx">Reports</a> </li>
+                <li><a href="/admin/settings.aspx">Settings</a></li>
             </asp:PlaceHolder>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a>About</a></li>
+            <li><a href="/about.aspx">About</a></li>
             <asp:PlaceHolder ID="plhLogout" runat="server">
-                <li><a href="logout.aspx">Logout</a></li>
+                <li><a href="/logout.aspx">Logout</a></li>
             </asp:PlaceHolder>
             <asp:PlaceHolder ID="plhPublic" runat="server">
-                <li><a href="login.aspx">Login</a></li>            
-                <li><a href="register.aspx">Register</a></li>
+                <li><a href="/login.aspx">Login</a></li>            
+                <li><a href="/register.aspx">Register</a></li>
             </asp:PlaceHolder>
         </ul>
         </div>
     </nav>
 
 <div class="container-fluid" style="margin-bottom:20px">    
-    <form id="mainForm" runat="server" class="form form-horizontal">
-    <div class="container">
+    <form id="mainForm" runat="server" class="form form-horizontal">    
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
-    </div>
     </form>
 </div>
 
