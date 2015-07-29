@@ -19,7 +19,6 @@
         AllowPaging="true" PageSize="3" OnPageIndexChanging="grdAccounts_PageIndexChanging"
         AllowSorting="true" OnSorting="grdAccounts_Sorting" OnRowDataBound="grdAccounts_RowDataBound" >
         <Columns>
-            <asp:BoundField DataField="AccountID" HeaderText="Account ID" SortExpression="AccountID"/>
             <asp:BoundField DataField="Account1" HeaderText="Account Type" SortExpression="Account1" />
          
             <asp:HyperLinkField HeaderText="Edit" Text="Edit" NavigateUrl="account.aspx"

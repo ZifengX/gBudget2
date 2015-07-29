@@ -19,7 +19,6 @@
         AllowPaging="true" PageSize="3" OnPageIndexChanging="grdMechants_PageIndexChanging"
         AllowSorting="true" OnSorting="grdMechants_Sorting" OnRowDataBound="grdMechants_RowDataBound" >
         <Columns>
-            <asp:BoundField DataField="MechantID" HeaderText="Mechant ID" SortExpression="MechantID"/>
             <asp:BoundField DataField="Mechant1" HeaderText="Mechant Name" SortExpression="Mechant1" />
          
             <asp:HyperLinkField HeaderText="Edit" Text="Edit" NavigateUrl="mechant.aspx"

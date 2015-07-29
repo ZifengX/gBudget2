@@ -28,6 +28,7 @@ namespace gBudget2
 
         protected void GetBill()
         {
+            var currentUserID = User.Identity.GetUserId();
             //populate form with existing bill record
             Int32 DatainfoID = Convert.ToInt32(Request.QueryString["DatainfoID"]);
 
@@ -36,6 +37,7 @@ namespace gBudget2
             {
                 //query the datainfo table using EF and LINQ
                 var Categories = from c in db.Categories
+                                 where c.UserID == currentUserID
                                  select c;
 
                 //bind the result to the gridview
@@ -43,12 +45,14 @@ namespace gBudget2
                 ddlCategory.DataBind();
 
                 var Accounts = from a in db.Accounts
+                               where a.UserID == currentUserID
                                select a;
 
                 ddlAccount.DataSource = Accounts.ToList();
                 ddlAccount.DataBind();
 
                 var Mechants = from m in db.Mechants
+                               where m.UserID == currentUserID
                                select m;
                 ddlMechant.DataSource = Mechants.ToList();
                 ddlMechant.DataBind();

@@ -19,7 +19,6 @@
         AllowPaging="true" PageSize="3" OnPageIndexChanging="grdBills_PageIndexChanging"
         AllowSorting="true" OnSorting="grdBills_Sorting" OnRowDataBound="grdBills_RowDataBound" >
         <Columns>
-            <asp:BoundField DataField="DatainfoID" HeaderText="Bill ID" SortExpression="DatainfoID" />
             <asp:BoundField DataField="Date" HeaderText="Date" DataFormatString="{0:yyyy-MM-dd}" SortExpression="Date"/>
             <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" />
             <asp:BoundField DataField="Category1" HeaderText="Category" SortExpression="Category1" />

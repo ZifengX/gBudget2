@@ -19,7 +19,6 @@
         AllowPaging="true" PageSize="3" OnPageIndexChanging="grdCategories_PageIndexChanging"
         AllowSorting="true" OnSorting="grdCategories_Sorting" OnRowDataBound="grdCategories_RowDataBound" >
         <Columns>
-            <asp:BoundField DataField="CategoryID" HeaderText="Category ID" SortExpression="CategoryID"/>
             <asp:BoundField DataField="Category1" HeaderText="Category Name" SortExpression="Category1" />
          
             <asp:HyperLinkField HeaderText="Edit" Text="Edit" NavigateUrl="category.aspx"
