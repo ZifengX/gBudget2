@@ -2,32 +2,39 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Register</h1>
-    <h5>All fields are required</h5>
-
-    <fieldset>
+    <div class="form-group">
+        <h1 class="form-signin-heading">Register</h1>
+        <h4>All fields are required</h4>
         <asp:Label ID="lblStatus" runat="server"></asp:Label>
-    </fieldset>
+    </div>
 
-    <fieldset>
-    <label for="txtUsername">UserName:</label>
-    <asp:TextBox ID="txtUsername" runat="server" />
-    </fieldset>
+    <div class="form-group">
+        <label for="txtUsername" class="col-sm-2 control-label">UserName:</label>
+        <div class="col-sm-10">
+            <asp:TextBox ID="txtUsername" runat="server" />
+        </div>
+    </div>
 
-    <fieldset>
-    <label for="txtPassword">Password:</label>
-    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" required />
-    </fieldset>
+    <div class="form-group">
+        <label for="txtPassword" class="col-sm-2 control-label">Password:</label>
+        <div class="col-sm-10">
+            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" required />
+        </div>
+    </div>
 
-    <fieldset>
-    <label for="txtConfirm">Confirm:</label>
-    <asp:TextBox ID="txtConfirm" runat="server" TextMode="Password" required />
-    <asp:CompareValidator runat="server" Operator="Equal" ControlToValidate="txtPassword"
-            controltocompare="txtConfirm" CssClass="label label-danger" ErrorMessage="Passwords must mach"></asp:CompareValidator>
-    </fieldset>
+    <div class="form-group">
+        <label for="txtConfirm" class="col-sm-2 control-label">Confirm:</label>
+        <div class="col-sm-10">
+            <asp:TextBox ID="txtConfirm" runat="server" TextMode="Password" required />
+            <asp:CompareValidator runat="server" Operator="Equal" ControlToValidate="txtPassword"
+                controltocompare="txtConfirm" CssClass="label label-danger" ErrorMessage="Passwords must mach"></asp:CompareValidator>
+        </div>
+    </div>
 
-    <div class="col-sm-offset-2">
-        <asp:Button ID="btnRegister" runat="server" Text="Save" CssClass="btn btn-primary"
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+        <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="btn btn-primary"
              OnClick="btnRegister_Click" />
+      </div>
     </div>
 </asp:Content>

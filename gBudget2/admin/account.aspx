@@ -2,17 +2,22 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Account Type</h1>
-    <h5>All fields are required</h5>
-
-    <fieldset>
-        <label for="txtAccount" class="col-sm-2">Account Type:</label>
-        <asp:TextBox ID="txtAccount" runat="server" required MaxLength="50" />
-    </fieldset>
-
-    <div class="col-sm-offset-2">
-        <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary"
-             OnClick="btnSave_Click" />
+    <div class="form-group">
+        <h1>Account Type</h1>
+        <h4>All fields are required</h4>
     </div>
 
+    <div class="form-group">
+        <label for="txtAccount" class="col-sm-2 control-label">Account Type:</label>
+        <div class="col-sm-10">
+            <asp:TextBox ID="txtAccount" runat="server" required MaxLength="50" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary"
+             OnClick="btnSave_Click" />
+        </div>
+    </div>
 </asp:Content>

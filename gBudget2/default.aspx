@@ -9,8 +9,8 @@
         <p>Username: admin, Password: 1234567</p>
         <p>Username: test, Password: 1234567</p>
         <p>
-          <a class="btn btn-lg btn-primary" href="login.aspx" role="button">Log In</a>
-          <a class="btn btn-lg btn-primary" href="register.aspx" role="button">Register</a>
+          <a class="btn btn-lg btn-primary" href="/login.aspx" role="button">Log In</a>
+          <a class="btn btn-lg btn-primary" href="/register.aspx" role="button">Register</a>
         </p>
      </div>
 </asp:Content>

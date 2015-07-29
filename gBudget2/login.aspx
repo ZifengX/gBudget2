@@ -2,24 +2,29 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Log In</h1>
-
-    <fieldset>
+    <div class="form-group">
+        <h1 class="form-signin-heading">Please sign in</h1>
         <asp:Label ID="lblStatus" runat="server"></asp:Label>
-    </fieldset>
+    </div>
 
-    <fieldset>
-    <label for="txtUsername">UserName:</label>
-    <asp:TextBox ID="txtUsername" runat="server" />
-    </fieldset>
+    <div class="form-group">
+        <label for="txtUsername" class="col-sm-2 control-label">UserName:</label>
+        <div class="col-sm-10">
+            <asp:TextBox ID="txtUsername" runat="server" required/>
+        </div>
+    </div>
 
-    <fieldset>
-    <label for="txtPassword">Password:</label>
-    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" />
-    </fieldset>
+    <div class="form-group">
+        <label for="txtPassword" class="col-sm-2 control-label">Password:</label>
+        <div class="col-sm-10">
+            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" />
+        </div>
+    </div>
 
-    <div class="col-sm-offset-2">
-        <asp:Button ID="btnLogin" runat="server" Text="Save" CssClass="btn btn-primary"
-             OnClick="btnLogin_Click" />
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <asp:Button ID="btnLogin" runat="server" Text="Sign in" CssClass="btn btn-lg btn-primary"
+                        OnClick="btnLogin_Click" />
+        </div>
     </div>
 </asp:Content>
